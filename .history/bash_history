@@ -1,0 +1,4 @@
+exit
+Traceback (most recent call last):
+TypeError: startswith first arg must be str or a tuple of str, not byte
+exit
