@@ -1,0 +1,33 @@
+version: '2.3'
+services:
+
+  dev:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - TENSORFLOW_VERSION=1.12.0-py3
+    image: jups/google-ffn:friday
+    volumes:
+      - .:/app
+      - .history:/.history
+    command: /bin/bash
+    environment:
+      TERM: xterm-256color
+      TZ: "Europe/Berlin"
+
+  dev-gpu:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - TENSORFLOW_VERSION=1.12.0-gpu-py3
+    image: jups/google-ffn:friday_gpu
+    volumes:
+      - .:/app
+      - .history:/.history
+    command: /bin/bash
+    runtime: nvidia
+    environment:
+      TERM: xterm-256color
+      TZ: "Europe/Berlin"
